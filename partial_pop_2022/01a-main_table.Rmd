@@ -1,0 +1,5 @@
+```{r}
+# using built in example data 
+#data <- vroom::vroom(here::here('partial_pop_2022', 'main_table.csv'))
+safe::main_table(data, year, tier=3, catch1, catch2, catch3)
+```

@@ -1,0 +1,50 @@
+# Executive Summary
+
+Gulf of Alaska `r species` (*Sebastes alutus*, POP) is assessed on a biennial stock assessment schedule to coincide with the availability of new trawl survey data (odd years).
+In alternate (even) years we present an executive summary to recommend harvest levels for the next two years.
+Please refer to last year’s full stock assessment report for further information regarding the assessment model ([Hulson et al., 2021](https://apps-afsc.fisheries.noaa.gov/refm/docs/2021/GOApop.pdf)).
+A full stock assessment document with updated assessment and projection model results will be presented in next year’s SAFE report. 
+
+We use a statistical age-structured model as the primary assessment tool for Gulf of Alaska Pacific ocean perch which qualifies as a Tier 3 stock.
+For an off-cycle year, we do not re-run the assessment model, but do update the projection model with new catch information.
+This incorporates the most current catch information without re-estimating model parameters and biological reference points.
+
+## Summary of Changes in Assessment Inputs
+
+*Changes in the input data*: There were no changes made to the assessment model inputs since this was an off-cycle year.
+New data added to the projection model included an updated `r year - 1` catch and new estimated catches for `r year`-`r year + 2`.
+
+*Changes in assessment methodology*: There were no changes in assessment methodology as this was an off-cycle year. 
+
+
+## Summary of Results
+
+New estimates for this year’s projection model are an updated `r year - 1` catch of `r catch0`, and new estimated `r year`-`r year + 2` catches of `r catch1` t, `r catch2` t, and `r catch3` t, respectively.
+The `r year` catch was estimated by expanding the `r date` catch by a factor of `r exp_fac` using the last three complete catch years (`r year - 3`-`r year - 1`) to project catch through the end of the `r year` fishing year. 
+To more accurately estimate future catch, an updated yield ratio of `r yld_rat` was computed using the average of the ratio of catch to ABC for the last three complete catch years (`r year - 3`-`r year - 1`).
+The updated yield ratio was then multiplied against the projected ABCs for `r year + 1` and `r year + 2` from the `r year - 1` assessment model to estimate future catches. 
+
+For the `r year + 1` fishery, we recommend the maximum allowable ABC of **`r ABC`** t from the updated projection model.
+The corresponding reference values for Pacific ocean perch are summarized in the following table.
+Overfishing is not occurring, the stock is not overfished, and it is not approaching an overfished condition.
+
+The Pacific ocean perch catch/biomass ratio has ranged from less than 0.01 to 0.05 between 1991 and `r year` (Figure 9-1).
+Since 2013, the catch/biomass ratio has been increasing.
+This is mainly a result of the fishery fully taking the ABC in all the areas where trawling is allowed.
+
+```{r, child= "01a-main_table.Rmd", eval = T}
+
+```
+
+```{r, child= "01b-apportionment.Rmd", eval = T}
+
+```
+
+
+If so are so kind as to provide tables for the plan team, place them here
+
+```{r, child= "01c-plan_team.Rmd", eval = T}
+
+```
+
+

@@ -1,0 +1,95 @@
+---
+params: 
+  chapter: 9
+  species: "Pacific ocean Perch"
+  species_complex: "no"
+  area: "Gulf of Alaska"
+  tier: 3
+
+author: "Peter-John F. Hulson, Benjamin C. Williams, Benjamin E. Fissel, Bridget E. Ferriss, Madison Hall, Ellen M. Yasumiishi, and Darin T. Jones"
+date: "November 2022"
+
+# don't do anything below this line unless you are cool with the consequences
+output:
+  bookdown::word_document2:
+     reference_docx: "template.docx"
+     toc: false
+     number_sections: false
+     css: "styles.css"
+     pandoc_args:  
+       - '--lua-filter=scholarly-metadata.lua'
+       - '--lua-filter=author-info-blocks.lua'
+
+always_allow_html: true        
+fontsize: 11pt
+geometry:
+  - top=1in
+  - bottom=1in
+  - left=1in
+  - right=1in     
+fig_caption: true
+bibliography: "safe_bibby.bib"
+csl: "fishfish.csl"
+
+---
+
+```{r setup, include=FALSE, echo = FALSE}
+# remotes::install_github("crsh/rmdfiltr")
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.pos = "!h", out.extra = "")
+knitr::opts_knit$set(eval.after = "fig.cap")
+x = 1
+sprintf("Figure %s. " , paste0(params$chapter, '.',x))
+```
+
+```{r}
+if(params$species_complex=="no"){
+   title = paste0(params$chapter, ". Assessment of the ", tools::toTitleCase(params$species), " Stock in the ", params$area)
+  } else {
+    title = paste0(params$chapter, ". Assessment of the ", tools::toTitleCase(params$species), " Stock complex in the ", params$area)  
+  }
+
+
+```
+
+---
+title: `r title`
+---
+
+```{r load, warning=F, message=F}
+# load
+library(safe)
+# globals
+species = params$species
+year = 2022
+date = 'October 22, 2022'
+model = "base"
+end_proj = year + 15
+best_f = 0.0641 # from the best_f function in groundfishr package
+ofl = 8000 # placeholder while i figure things out
+
+# todo: read from proj output
+data <- vroom::vroom(here::here('partial_pop_2022', 'main_table.csv'))
+
+
+catch0 = 100 # finalized catch in previous year
+catch1 = 101 # estimated catch in current year
+catch2 = 3489 # proj catch year + 1
+catch3 = 2884 # proj catch year + 2
+exp_fac = 1.1 # catch expansion factor
+yld_rat = 0.9 # yeild ration of catch to ABC
+ABC = data[12, 3] # Projected ABC
+wyak_r = 0.29
+
+# todo: build a function/switch to auto run the tier(a/b) - also for overfishing/overfished
+```
+
+```{r, child="01-summary.Rmd", eval = T}
+```
+
+\pagebreak
+\allsectionsfont{\centering}
+# References
+<div id="refs"></div>
+
+```{r, child="12-figures.Rmd", eval = T}
+```
